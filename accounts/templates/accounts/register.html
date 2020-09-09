@@ -1,0 +1,28 @@
+{% extends "base/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container">
+    <h1 class="main-header">Welcome - Let's Get Started</h1>
+    <h5>
+        Please complete the following form in full to open an account. 
+    </h5>
+    <p>
+        Already have an account with us? <a href="{% url 'login' %}">Login Here</a>
+    </p>
+    <div class="col-sm-4 col-12">
+
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset>
+                {{ form|crispy }}
+            </fieldset>
+            <div>
+                <button type='submit' class='login-btn btn-default'>Submit</button>
+            </div>
+        </form>
+    <div>
+    <h6>
+        <b>Warning:</b> if you're using a shared or public computer, do not save your user login details online
+    </h6>
+</div>
+{% endblock content %}

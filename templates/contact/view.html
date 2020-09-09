@@ -1,0 +1,13 @@
+{% extends "base/base.html" %}
+{% block content %}
+    <div class="container">
+        <h1 class="main-header">Have a Question We Can Help With?</h1>
+        <h6>Please Complete the Following Form - We Aim To Respond To All Queries in 3-5 Working Days.</h6>
+        <div class="col-sm-4 col-12">
+            <form method="POST"> {% csrf_token %}
+                {{ form }}
+                <button type='submit' class='login-btn btn-default'>Submit</button>
+            </form>
+            <div>
+    </div>
+{% endblock content %}
