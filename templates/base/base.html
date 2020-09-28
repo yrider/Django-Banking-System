@@ -2,13 +2,15 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <link rel="shortcut icon" type="image/png" href="/static/poundnote.png">
 
     {% if title %}
     <title>Bank - {{ title }}</title>  
@@ -17,12 +19,13 @@
     {% endif %}
   </head>
   <body>
+
       <!-- NAVIGATION -->
-      <nav>
-          <div class="navbar navbar-expand-md sticky-top">
+        <nav>
+            <div class="navbar navbar-expand-md navbar-light bg-light sticky-top">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{% url 'home' %}">BankingSystem</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">#
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
@@ -31,20 +34,11 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'home' %}">Home</a>
                         </li>
-                        <!-- <li class="nav-item"> REMOVED FOR NOW AS NOT NECCESARY (NOT ENOUGH PROFILE INFO)
-                            <a class="nav-link" href="{% url 'profile' %}">Profile</a>
-                        </li> -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'about' %}">About</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'transactions' %}">Transactions</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'deposits' %}">Deposits</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'withdrawals' %}">Withdrawals</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'loans' %}">Loans</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'transfers' %}">Transfers</a>
@@ -76,12 +70,10 @@
                     </ul>
                 </div>
             </div>
-          </div>
-      </nav>
-
-      <main>
-        <div class="container">
-
+            </div>
+        </nav>
+        <main>
+            
             {% if messages %}
                 {% for message in messages %}
                     <div class="alert alert-{{ message.tags }}">
@@ -91,16 +83,49 @@
             {% endif %}
 
             {% block content %}{% endblock %}
-        </div>
-      </main>
+            
+        </main>
+      <!-- FOOTER -->
+        <div>
+            <footer>
+                <div class="container-fluid padding bg-dark text-white">
+                    <div class="row text-center">
+                        <div class="col-md-4">
+                            <hr class="light">
+                            <h5>Banking System</h5>
+                            <hr class="light">
+                            <p>0208 325 9843</p>
+                            <p>enquires@bank.com</p>
+                            <p>Bank, Building 3</p>
+                            <p>Canary Wharf, London</p>
+                        </div>
+                        <div class="col-md-4">
+                            <hr class="light">
+                            <h5>Ours Hours (GMT Time)</h5>
+                            <hr class="light">
+                            <p>Monday - Friday: 9am - 5pm</p>
+                            <p>Saturday: 9am - 2pm </p>
+                            <p>Sunday: closed</p>
+                        </div>
+                        <div class="col-md-4">
+                            <hr class="light">
+                            <h5>Locations</h5>
+                            <hr class="light">
+                            <p>London</p>
+                            <p>New York</p>
+                            <p>Singapore</p>
+                            <p>Hong Kong</p>
+                        </div>
+                        <div class="col-12">
+                            <br>
+                            <hr class="light">
 
-      <footer>
-          <div class="container-fluid padding">
-            <div class="footer-copyright text-center py-3">© 2020 Copyright:
-                <a id="footer-link" href="{% url 'home' %}">BankingSystem.com</a>
-            </div>
-          </div>
-      </footer>
+                            <h5>&copy; bank.com</h5>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

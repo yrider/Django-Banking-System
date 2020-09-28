@@ -107,6 +107,15 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Installed Argon2 at cmd line to provide further password security. Winner of the 2015 Password Hashing Competition
+
+PASSWORD_HASHERS = [
+    'django.contrib.auth.hashers.Argon2PasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2PasswordHasher',
+    'django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher',
+    'django.contrib.auth.hashers.BCryptSHA256PasswordHasher',
+]
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
@@ -127,18 +136,21 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static_my_proj"),
-]
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR),
+    'static'
+)
 
-STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn", "static_root")
+#STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static", "static_root")
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn", "media_root")
+MEDIA_ROOT = (
+    os.path.join(BASE_DIR, 'media')
+)
+#MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn", "media_root")
 
 LOGIN_REDIRECT_URL = 'profile'
 LOGIN_URL = 'login'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
-
 
 ACCOUNT_NUMBER_START_FROM = 2453168

@@ -1,9 +1,27 @@
 {% extends "base/base.html" %}
+{% load crispy_forms_tags %}
 {% block content %}
-    <div class="container">
-        <div class="col-sm-4 col-12">
-            <h1>Internal transfer page</h1>
-        </div>
-    </div>
 
+    <div class="container-fluid padding bg-dark">
+        <br>
+        <div class="card">
+            <h5 class="card-header">My Account</h5>
+            <div class="card-body">
+                <h5 class="card-title">Account Holder: {{ user.first_name }} {{ user.last_name }}</h5>
+                <h5 class="card-title">Account Number: {{ user.account.account_no }}</h5>
+                <h5 class="card-title">Balance: £{{ user.account.balance}}</h5>
+            </div>
+        </div>
+        <br>
+        <form method="POST"> {% csrf_token %}
+            <div class="card">
+                <h5 class="card-header">Create a Transaction</h5>
+                <div class="card-body">
+                    {{ form|crispy }}
+                    <button type="submit" class='btn btn-outline-secondary btn-md'>Submit</button>
+                </div>
+            </div> 
+        </form>
+    </div>
+    
 {% endblock content %}

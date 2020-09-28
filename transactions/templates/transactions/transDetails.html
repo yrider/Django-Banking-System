@@ -1,9 +1,76 @@
 {% extends "base/base.html" %}
 {% block content %}
-    <div class="container">
-        <div class="col-sm-4 col-12">
-            <h1>Transaction Information Page</h1>
+    <div class="container-fluid padding bg-dark">
+        <!-- ACCOUNT INFO MAIN-->
+        <br>
+        <div class="card">
+            <h5 class="card-header">My Account</h5>
+            <div class="card-body">
+                <h5 class="card-title">Account Holder: {{ user.first_name }} {{ user.last_name }}</h5>
+                <h5 class="card-title">Account Number: {{ user.account.account_no }}</h5>
+                <h5 class="card-title">Balance: £{{ user.account.balance}}</h5>
+            </div>
+        </div> 
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title">Transactions</h5>
+                    </div>
+                    <div class="card-content mt-1">
+                        <div>
+                            <table class="table table-xl text-center trans-wrapper">
+                                <thead>
+                                    <tr>
+                                        <th class="border-top-0">ID</th>
+                                        <th class="border-top-0">Transaction Type</th>
+                                        <th class="border-top-0">Amount (GBP)</th>
+                                        <th class="border-top-0">Date & Time</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div id="transactions">
+                                                {% for transaction in transaction_list %}
+                                                        <li style="list-style-type: none; padding: 5px;">{{ transaction.id }}</li>                 
+                                                {% endfor %}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="translist">
+                                                {% for transaction in transaction_list %}
+                                                    {% if transaction.transaction_type == 'W' %}
+                                                        <li style="list-style-type: none; padding: 5px;">Withdrawal</li>
+                                                    {% elif transaction.transaction_type == 'D' %}
+                                                        <li style="list-style-type: none; padding: 5px;">Deposit</li>    
+                                                    {% endif %}  
+                                                {% endfor %}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div>
+                                                {% for transaction in transaction_list %}
+                                                        <li style="list-style-type: none; padding: 5px;">£{{ transaction.amount }}</li>
+                                                {% endfor %}
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div>
+                                                {% for transaction in transaction_list %}
+                                                        <li style="list-style-type: none; padding: 5px;">{{ transaction.timestamp }}</li>
+                                                {% endfor %}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div> 
+            </div>
         </div>
-    </div>
 
 {% endblock content %}
+

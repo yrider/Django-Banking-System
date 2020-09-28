@@ -1,28 +1,48 @@
 {% extends "base/base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
-<div class="container">
-    <h1 class="main-header">Welcome - Let's Get Started</h1>
-    <h5>
-        Please complete the following form in full to open an account. 
-    </h5>
-    <p>
-        Already have an account with us? <a href="{% url 'login' %}">Login Here</a>
-    </p>
-    <div class="col-sm-4 col-12">
-
-        <form method="POST">
-            {% csrf_token %}
-            <fieldset>
+    <div class="page-holder bg-cover bg-dark text-white text-center">
+        <div class="container py-5">
+            <h1>Welcome - Let's Get Started</h1>
+            <br>
+            <h4>Please complete the following form in full to open an account. </h4>
+            <h6>
+                Already have an account with us? <a href="{% url 'login' %}">Login Here</a>
+            </h6>
+            <form method="POST" class="contactform"> {% csrf_token %}
                 {{ form|crispy }}
-            </fieldset>
-            <div>
-                <button type='submit' class='login-btn btn-default'>Submit</button>
+                <br>
+                <button type='submit' class='btn btn-outline-light btn-lg'>Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="container-fluid padding">
+        <div class="row text-center padding">
+            <div class="col-12">
+                <br>
+                <h2 class="text-dark">Our Terms & Conditions</h2>
             </div>
-        </form>
-    <div>
-    <h6>
-        <b>Warning:</b> if you're using a shared or public computer, do not save your user login details online
-    </h6>
-</div>
+            <div class="col-12 text-center">
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus necessitatibus soluta perferendis fuga fugiat accusantium, tempore aliquid incidunt voluptatum voluptatem earum harum, quas laborum molestias veritatis quo fugit asperiores quod. 
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil, ipsam magnam repudiandae placeat reprehenderit facilis enim repellendus aliquid. Tempore recusandae aspernatur eos amet enim unde? Saepe non eaque sequi harum.
+                </p>
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus necessitatibus soluta perferendis fuga fugiat accusantium, tempore aliquid incidunt voluptatum voluptatem earum harum, quas laborum molestias veritatis quo fugit asperiores quod.
+                </p>
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus necessitatibus soluta perferendis fuga fugiat accusantium, tempore aliquid incidunt voluptatum voluptatem earum harum, quas laborum molestias veritatis quo fugit asperiores quod.
+                </p>
+                <h6>
+                    Unsure about any of our terms or want to know more? Contact us <a class="registerlink" href="{% url 'contact' %}">here.</a>
+                </h6>
+
+
+
+
+
+            </div>
+        </div>
+    </div>
 {% endblock content %}

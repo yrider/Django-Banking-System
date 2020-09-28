@@ -1,11 +1,8 @@
-from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from accounts.forms import LoginForm, RegisterForm
-from .forms import ContactForm
-from django.contrib.auth import authenticate, login, get_user_model
-from django.views.generic import CreateView, FormView, DetailView, TemplateView
+from django.views.generic import TemplateView
 from django.views import View
+from .forms import ContactForm
 
 class HomeView(View):
     def get(self, request):
@@ -32,7 +29,6 @@ class ContactView(TemplateView):
         
         if form.is_valid():
             print(form.cleaned_data)
-            #print(form.cleaned_data.get("email"))
             messages.success(request, 'Thank you, your message has been sent. We aim to respond to all messages within 3-5 working days.')
             return redirect('home')
         context = {

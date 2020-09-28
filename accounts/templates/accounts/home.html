@@ -1,29 +1,77 @@
 {% extends "base/base.html" %}
 {% block content %}
-    <div class="container">
-        <div class="col-sm-4 col-12">
-            <h1>HOME PAGE</h1>
+    <div id="slides" class="carousel slide" data-ride="carousel">
+        
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="static/london.png" alt="Mountain">
+                <div class="carousel-caption">
+                    <h1 class="display-2">Bank</h1>
+                    <h3>Powered By Purpose</h3>
+                    
+                    <a href="{% url 'register' %}">
+                        <button type="button" class="btn btn-outline-light btn-lg">
+                            Start your journey here
+                        </button>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!--
-    <div id="slides" class="carousel slide" data-ride="carousel">
-    <ul class="carousel-indicators">
-        <li data-target="#slides" data-slide-to="0" class="active"></li>
-        <li data-target="#slides" data-slide-to="1"></li>
-        <li data-target="#slides" data-slide-to="2"></li>
-    </ul>
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img src="../accounts/img/canaryWharfNight.jpg">
-        </div>
-        <div class="carousel-item">
-            <img src="../accounts/img/background2.png">
-        </div>
-        <div class="carousel-item">
-            <img src="../accounts/img/background3.png">
+    <!-- JUMBOTRON -->
+    <div class="container-fluid">
+        <div class="row jumbotron">
+            <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 col-xl-10">
+                <p class="lead">
+                    Welcome, we are a global investment manager, serving the UK market for more than 20 years. We are committed to helping more and more people plan for their financial future.
+                    No matter what your goals may be, we are invested in you.
+                </p>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 col-xl-2">
+                <a href="{% url 'about' %}">
+                    <button type="button" class="btn btn-outline-secondary btn-lg">
+                        Learn more
+                    </button>
+                </a>
+            </div>
         </div>
     </div>
+
+    <!-- WELCOME SECTION -->
+    <div class="container-fluid padding">
+        <div class="row welcome text-center">
+            <div class="col-12">
+                <h1 class="display-4">Built With Ease</h1>
+            </div>
+            <hr>
+            <div class="col-12">
+                <p class="lead">This web application was designed using HTML, CSS and Boostrap 4.</p>
+            </div>
+        </div>
     </div>
-    -->
+
+    <!-- Three Column Section -->
+    <div class="container-fluid padding">
+        <div class="row text-center padding">
+            <div class="col-xs-12 col-sm-6 col-md-4">
+                <i class="fas fa-code"></i>
+                <h3>HTML5</h3>
+                <p>Built with the latest version of HTML, HTML5.</p>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-4">
+                <i class="fas fa-bold"></i>
+                <h3>BOOTSTRAP</h3>
+                <p>Built with the latest verion of Bootstrap, Bootstrap4.</p>
+            </div>
+            <div class="col-sm-12 col-md-4">
+                <i class="fab fa-css3"></i>
+                <h3>CSS3</h3>
+                <p>Built with the latest version of CSS, CSS3.</p>
+            </div>
+        </div>
+       <br>
+    </div>
+    
+
 {% endblock content %}

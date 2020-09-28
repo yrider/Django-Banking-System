@@ -1,25 +1,21 @@
 {% extends "base/base.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
-    <div class="container">
-        <h1 class="main-header">Welcome to Online Banking</h1>
-        <h6>Don't Have An Account With Us? <a href="{% url 'register' %}">Click Here</a>
-        </h6>
-        <div class="col-sm-4 col-12">
 
-            <form method="POST">
-                {% csrf_token %}
-                <fieldset>
-                    {{ form|crispy }}
-                </fieldset>
-                <div>
-                    <button type='submit' class='login-btn btn-default'>Submit</button>
-                </div>
+    <div class="page-holder bg-cover bg-dark text-white text-center">
+        <div class="container py-5">
+            <h1>Welcome to Online Banking</h1>
+            <br>
+            <h4>Login below with your email address and password.</h4>
+            <h6>
+                Don't have an account with us? <a href="{% url 'register' %}">Click Here</a>
+            </h6>
+            <form method="POST" class="contactform"> {% csrf_token %}
+                {{ form|crispy }}
+                <br>
+                <button type='submit' class='btn btn-outline-light btn-lg'>Submit</button>
             </form>
-        <div>
-        <h6>
-            <b>Warning:</b> if you're using a shared or public computer, do not save your user login details online
-        </h6>
+        </div>
     </div>
 
 {% endblock content %}

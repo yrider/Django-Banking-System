@@ -1,3 +1,4 @@
+import datetime
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.contrib.auth.models import (
@@ -5,12 +6,13 @@ from django.contrib.auth.models import (
 )
 from .managers import UserManager
 
+
 class User(AbstractUser):
     username = None
     email = models.EmailField(unique=True, max_length=255, blank=False)
     first_name = models.CharField(max_length=255, null=True)
     last_name = models.CharField(max_length=255, null=True)
-    timestamp = models.DateTimeField(auto_now_add=True)
+    timestamp = models.DateTimeField(default=datetime.datetime.now)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['first_name', 'last_name']
@@ -47,7 +49,6 @@ class UserBankAccount(models.Model):
     street_address = models.CharField(max_length=100, null=True)
     city = models.CharField(max_length=100, null=True)
     postal_code = models.CharField(max_length=100, null=True)
-    country = models.CharField(max_length=100, null=True)
     balance = models.DecimalField(
         default=0,
         max_digits=12,
@@ -56,7 +57,7 @@ class UserBankAccount(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True, null=True, blank=True)
 
     REQUIRED_FIELDS = ['contact_no', 'account_no', 'gender', 'birth_date',
-    'annual_income', 'street_address', 'city', 'postal_code', 'country']
+    'annual_income', 'street_address', 'city', 'postal_code']
 
     def __str__(self):
         return str(self.account_no)

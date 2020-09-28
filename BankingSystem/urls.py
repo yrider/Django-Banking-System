@@ -15,12 +15,13 @@ Including another URLconf
 """
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 from django.contrib import admin
 from django.urls import path
 from .views import HomeView, AboutView, ContactView
-from accounts.views import RegisterView, LoginView, ProfileView
-from transactions.views import DepositView, WithdrawalView, LoanView, TransactionView, TransferView
+from accounts.views import RegisterView, LoginView
+from transactions.views import TransactionView, TransferView
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.decorators import login_required
 
@@ -29,18 +30,12 @@ urlpatterns = [
     path('', HomeView.as_view(), name='home'),
     path('about/', AboutView.as_view(), name="about"),
     path('contact/', ContactView.as_view(), name="contact"),
-    path('profile/', login_required(ProfileView.as_view()), name="profile"),
     path('login/', LoginView.as_view(), name="login"),
     path('logout/', auth_views.LogoutView.as_view(template_name="accounts/logout.html"), name='logout'),
     path('register/', RegisterView.as_view(), name="register"),
-    path('deposits/', login_required(DepositView.as_view()), name="deposits"),
-    path('withdrawals/', login_required(WithdrawalView.as_view()), name="withdrawals"),
-    path('loans/', login_required(LoanView.as_view()), name="loans"),
     path('transactions/', login_required(TransactionView.as_view()), name="transactions"),
     path('transfers/', login_required(TransferView.as_view()), name="transfers")
 ]
 
-# debug is true during dev but not production. Therefore if below is true static files won't be served as only used for dev phase/testing
-if settings.DEBUG:
-    urlpatterns = urlpatterns + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-    urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += staticfiles_urlpatterns()
+
